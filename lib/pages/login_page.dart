@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/components/my_textfield.dart';
 
 class LoginPage extends StatelessWidget {
@@ -42,11 +43,42 @@ class LoginPage extends StatelessWidget {
               obscureText: false,
             ),
 
+            const SizedBox(height: 10),
+
             // Password textfield
+
+            MyTextField(
+              controller: passwordController,
+              hintText: "Password",
+              obscureText: true,
+            ),
+
+            const SizedBox(height: 20),
 
             // Sign in button
 
+            MyButton(text: "Sign In", onTap: () {}),
+
+            const SizedBox(height: 20),
+
             // Register
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Not a member?",
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary),
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  "Register now!",
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            )
           ],
         ),
       ),
