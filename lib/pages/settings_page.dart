@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/themes/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -10,10 +12,11 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Settings",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
         ),
-        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.background,
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
@@ -36,8 +39,11 @@ class SettingsPage extends StatelessWidget {
 
                 // Switch
                 CupertinoSwitch(
-                  value: true,
-                  onChanged: (value) {},
+                  value: Provider.of<ThemeProvider>(context, listen: false)
+                      .isDarkMode,
+                  onChanged: (value) =>
+                      Provider.of<ThemeProvider>(context, listen: false)
+                          .toggleTheme(),
                 ),
               ],
             ),
